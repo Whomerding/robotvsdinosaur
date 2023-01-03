@@ -1,33 +1,41 @@
 from dinosaur import Dinosaur
 from robot import Robot
 
-dinosaur_one = Dinosaur ("Gigamoose", 25)
-
-robot_one = Robot ("Randy")
 
 class Battlefield:
     def __init__(self):
-        pass
+        self.dinosaur_one = Dinosaur ("Gigamoose", 25)
+        self.robot_one = Robot ("Randy")
  
-    def run_game(self):
-        pass
-
+    def run_game (self):
+        self.display_welcome ()
+        self.battle_phase ()
+        self.display_winner ()
+    
     def display_welcome (self):
-        print (f"Welcome to a tournament of champions!  We have the terrifying Dinosaur {dinosaur_one.name} and the equally diabolical Robot {robot_one.name} fighting for ultimate superiority!")
+        print (f"Welcome to a tournament of champions!  We have the terrifying Dinosaur {self.dinosaur_one.name} and the equally diabolical Robot {self.robot_one.name} fighting for ultimate superiority!")
 
     def battle_phase (self):
-        while dinosaur_one.health or robot_one.health > 0:
+        while self.dinosaur_one.health or self.robot_one.health > 0:
 
-            robot_one.attack
-            print (f"{robot_one.name} attacks with a {robot_one.current_weapon} causing {robot_one.current_weapon.attack_power}!\n {dinosaur_one.name} has {dinosaur_one.health} remaining!")
+            self.robot_one.attack (self.dinosaur_one)
+            print (f"{self.robot_one.name} attacks with a {self.robot_one.current_weapon} causing {self.robot_one.current_weapon.attack_power}!\n {self.dinosaur_one.name} has {self.dinosaur_one.health} remaining!")
             
-            dinosaur_one.attack
-            print (f"{dinosaur_one.name} attacks causing {dinosaur_one. attack_power} points of damage !\n {robot_one.name} has {robot_one.health} remaining!")
+            self.dinosaur_one.attack (self.robot_one)
+            print (f"{self.dinosaur_one.name} attacks causing {self.dinosaur_one. attack_power} points of damage !\n {self.robot_one.name} has {self.robot_one.health} remaining!")
             
       
-
     def display_winner (self):
-        pass
+        if self.dinosaur_one.health > 0:
+            print ("the dino won")
 
-  
+        else:
+            print ("The robot won!")
+            
+
+
+    
+
+    
+
        
